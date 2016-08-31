@@ -1,0 +1,6 @@
+# главный роут
+app:
+    path: /{_locale}
+    defaults: { _controller: AppBundle:Default:index, _locale: '%locale%' }
+    requirements:
+        _locale: '%available_langs%'
