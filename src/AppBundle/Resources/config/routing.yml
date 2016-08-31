@@ -4,3 +4,18 @@ app:
     defaults: { _controller: AppBundle:Default:index, _locale: '%locale%' }
     requirements:
         _locale: '%available_langs%'
+
+login:
+    path:   /{_locale}/login
+    defaults:  { _controller: AppBundle:User:login, _locale: '%locale%' }
+    requirements:
+        _locale: '%available_langs%'
+
+login_check:
+    path:   /login_check
+
+adminka:
+    path: /adminka
+    defaults: { _controller: AppBundle:Admin/Default:index, _locale: '%locale%' }
+    requirements:
+        _locale: '%available_langs%'
