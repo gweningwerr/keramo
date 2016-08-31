@@ -1,5 +1,6 @@
 <?php
 namespace AppBundle\Repository;
+use AppBundle\Helper\App;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -10,6 +11,10 @@ use Doctrine\ORM\EntityRepository;
 
 class BannerRepository  extends EntityRepository
 {
+
+	public function Fopo () {
+		App::dump(111111111);
+	}
 
 }
 
