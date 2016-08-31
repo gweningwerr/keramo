@@ -1,0 +1,46 @@
+{
+  "name": "keramotile.local",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.php",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@89.108.79.22/home/git/repo/kak-ect.git"
+  },
+  "keywords": [
+    "eat"
+  ],
+  "author": "MihailShirnin",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "~0.1.7",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-less": "^3.0.5",
+    "gulp-rename": "~1.2.2",
+    "gulp-rigger": "^0.5.8",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-strip-comments": "^2.4.3",
+    "gulp-uglify": "^1.5.4",
+    "gulp.spritesmith": "^3.8.2",
+    "jshint": "^2.9.2",
+    "less": "^2.6.1",
+    "yargs": "^4.8.1"
+  },
+  "devDependencies": {
+    "gulp-debug": "^2.1.2",
+    "gulp-plumber": "^1.1.0",
+    "pump": "~1.0.1"
+  }
+}
