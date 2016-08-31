@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimal-ui" />
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    </head>
+
+    <body>
+
+    {% if error %}
+	    <div>error: {{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if error %}
+        <form action="{{ path('login') }}" class="login" method="post">
+	{% else %}
+	    <form action="{{ path('login_check') }}" class="login" method="post">
+	{% endif %}
+
+	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+	    <input type="hidden" name="_target_path" value="account" />
+
+	    <label for="username">Username:</label>
+	    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+	    <label for="password">Password:</label>
+	    <input type="password" id="password" name="_password" />
+
+	    {#
+			If you want to control the URL the user
+			is redirected to on success (more details below)
+			<input type="hidden" name="_target_path" value="/account" />
+		#}
+
+	    <button type="submit">login</button>
+    </form>
+
+
+
+
+
+
+
+    </body>
+</html>
