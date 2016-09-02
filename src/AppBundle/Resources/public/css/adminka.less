@@ -1,0 +1,38 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.navbar {
+	.navbar-header {
+		width: 200px;
+		position: relative;
+		z-index: 11;
+	}
+}
+.wrapper {
+	margin-top: 51px;
+	&.sidebar-hide {
+		.sidebar-left {
+			width: 20px;
+		}
+		.content-wrapper {
+			margin-left: 20px;
+		}
+	}
+	.sidebar-left {
+		border: 1px solid #000000;
+		position: fixed;
+		width: 220px;
+		top: 51px;
+		left: 0;
+		bottom: 0;
+		z-index: 116;
+		background-color: #fff;
+		transition: width .2s cubic-bezier(.35,0,.25,1),translate .2s cubic-bezier(.35,0,.25,1);
+	}
+	.content-wrapper {
+		position: relative;
+		height: 100%;
+		margin-left: 220px;
+		transition: width .2s cubic-bezier(.35,0,.25,1),translate .2s cubic-bezier(.35,0,.25,1);
+	}
+}
+
+
