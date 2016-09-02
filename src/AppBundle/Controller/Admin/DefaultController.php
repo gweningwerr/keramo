@@ -21,7 +21,7 @@ class DefaultController extends Controller
 //	    App::dump($Testing->findAll());
 //	    App::dump( App::getCurLocale());
 		// replace this example code with whatever you need
-		return $this->render('default/index.html.twig', [
+		return $this->render('AppBundle:Adminka:layout.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
 		]);
 	}
