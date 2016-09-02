@@ -31,7 +31,7 @@
 	    {% block header %}
 		     <header class="navbar navbar-default navbar-fixed-top navbar-inner">
 			     <div class="navbar-header">
-				     <a href="/adminka" role="button" class="navbar-brand">Admin Panel</a>
+				     <a href="{{ path('adminka.home') }}" role="button" class="navbar-brand">Admin Panel</a>
 			     </div>
 			     {% include 'AppBundle:Adminka:navbar.html.twig' %}
 		    </header>
@@ -43,14 +43,19 @@
 			    {% endblock sidebar_left %}
 			    <div class="content-wrapper">
 				    {% block content_header %}
-					    <section class="content-header">
-						    sonata_page_content_header
-					    </section>
+					    <div class="page-heading">
+						    <h1>{% block h1 %}page_title <small>page_title_comm</small>{% endblock h1 %}</h1>
+					    </div>
+					    <ol class="breadcrumb">
+						    <li><a href="{{ path('adminka.home') }}">Admin Panel</a></li>
+						    <li><a href="#">UI Elements</a></li>
+						    <li class="active"><a href="ui-buttons.html">Buttons</a></li>
+					    </ol>
 				    {% endblock content_header %}
 
-				    <section class="content">
+				    <section class="container-fluid">
 					    {% block content %}
-						    пропоп
+						    container-fluid
 					    {% endblock content %}
 					</section>
 
