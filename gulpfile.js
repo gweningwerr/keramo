@@ -13,13 +13,15 @@ var gulp = require('gulp'),
     strip = require('gulp-strip-comments'),
 	rigger = require('gulp-rigger'),
 	argv = require('yargs').argv,				// получение переменных
-	isDebag = argv.debag ? true : false			// определение дебага
+	isDebag = argv.debag ? false : true			// определение дебага
 	;
 
 var buld = {
 	less: {
 		lib: [
-			'bower_components/bootstrap/less/bootstrap.less'
+			'bower_components/bootstrap/less/bootstrap.less',
+			'bower_components/angular-bootstrap/ui-bootstrap-csp.css',
+			'bower_components/font-awesome-less/css/font-awesome.css'
 		],
 		base: [
 			'src/AppBundle/Resources/public/css/*.less'
@@ -28,7 +30,12 @@ var buld = {
 	js: {
 		lib: [
 			'bower_components/jquery/dist/jquery.js',
-			'bower_components/bootstrap/dist/js/bootstrap.js'
+			'bower_components/angular/angular.js',
+			'bower_components/angular-animate/angular-animate.js',
+			'bower_components/angular-sanitize/angular-sanitize.js',
+			'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+			'bower_components/angular-bootstrap/ui-bootstrap.js'
+			//'bower_components/bootstrap/dist/js/bootstrap.js'
 		],
 		base: [
 			'src/AppBundle/Resources/public/js/adminka.js',
@@ -67,7 +74,10 @@ gulp.task('buld:less', function () {
 // gulp buld:fonts
 /////////////////////////////////////////////////////////////////
 gulp.task('buld:fonts', function () {
-    return gulp.src(['bower_components/bootstrap/fonts/*'])
+    return gulp.src([
+    	'bower_components/bootstrap/fonts/*',
+		'bower_components/font-awesome-less/fonts/*'
+	])
         .pipe(gulp.dest('web/fonts/'))
 });
 
@@ -83,8 +93,8 @@ gulp.task('buld:js:lib', function() {
 		.pipe(concat('lib.js'))
 		.pipe(gulp.dest('web/js/'))
 		// собираем версию min
-		.pipe(strip())					// чистим комменты
-		//.pipe(minifyJs())
+		//.pipe(strip())					// чистим комменты
+		.pipe(minifyJs())
 		.pipe(rename({suffix: '.min'}))
 		.pipe(gulp.dest('web/js/'))
 	;
@@ -103,24 +113,24 @@ gulp.task('buld:js', function() {
 			.pipe(jshint()) 				// проверка синтаксиса
 			.pipe(jshint.reporter('default'))
 			.pipe(sourcemaps.write()) 		// Пропишем карты
-			.pipe(gulp.dest('web/_js/'))
+			.pipe(gulp.dest('web/js/'))
 			// собираем версию min
 			.pipe(strip())					// чистим комменты
 			.pipe(minifyJs())
 			.pipe(rename({suffix: '.min'}))
-			.pipe(gulp.dest('web/_js/'))
+			.pipe(gulp.dest('web/js/'))
 		;
 	} else {
 		gulp.src( buld.js.base )
 			.pipe(rigger()) 				// Прогоним через rigger
 			.pipe(sourcemaps.init()) 		// Инициализируем sourcemap
 			.pipe(sourcemaps.write()) 		// Пропишем карты
-			.pipe(gulp.dest('web/_js/'))
+			.pipe(gulp.dest('web/js/'))
 			// собираем версию min
 			.pipe(strip())					// чистим комменты
 			.pipe(minifyJs())
 			.pipe(rename({suffix: '.min'}))
-			.pipe(gulp.dest('web/_js/'))
+			.pipe(gulp.dest('web/js/'))
 		;
 	}
 	
