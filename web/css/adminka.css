@@ -1,3 +1,95 @@
+html {
+  -ms-overflow-style: scrollbar;
+}
+:focus,
+:active {
+  outline: 0 !important;
+}
+::-moz-focus-inner {
+  border: 0 !important;
+}
+body {
+  background: #f2f5f7;
+  font-weight: 400;
+}
+a {
+  outline: none;
+  cursor: pointer;
+  color: #3498db;
+}
+a :hover {
+  color: #217dbb;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Source Sans Pro', 'Segoe UI', 'Droid Sans', Tahoma, Arial, sans-serif;
+  font-weight: 300;
+}
+.clearfix:before,
+.clearfix:after,
+.page-heading:before,
+.page-heading:after,
+.page-heading h1:before,
+.page-heading h1:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after,
+.page-heading:after,
+.page-heading h1:after {
+  clear: both;
+}
+.page-heading {
+  background: #e6eaed;
+  padding: 10px;
+  margin: 0 0 5px;
+}
+.page-heading h1 {
+  float: left;
+  margin: 0;
+  line-height: 30px;
+  font-weight: 300;
+  font-size: 20px;
+}
+.page-heading h1 small {
+  font-size: 12px;
+  color: #93a8a8;
+  margin-left: 5px;
+  font-weight: 400;
+}
+.breadcrumb {
+  border: 1px solid #e6eaed !important;
+  padding: 4px 12px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #e6eaed;
+  border-radius: 3px;
+}
+.breadcrumb > li {
+  display: inline-block;
+  color: #cbd6d6;
+  font-size: 12px !important;
+}
+.breadcrumb > li + li:before {
+  content: "/\00a0";
+  padding: 0 5px;
+  color: #cbd6d6;
+}
+.breadcrumb > .active {
+  color: #93a8a8;
+}
 .nav,
 .pagination,
 .carousel,
