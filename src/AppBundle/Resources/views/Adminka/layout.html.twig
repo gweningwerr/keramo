@@ -1,55 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.get('_locale') }}">
     <head>
         {% block meta_tags %}
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta charset="UTF-8">
             <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         {% endblock %}
-
         {% block stylesheets %}
-	        <link rel="stylesheet" href="{{ asset('stylesheet') }}">
+	        {% if app.debug %}
+		        <link rel="stylesheet" href="{{ asset('css/lib.css') }}">
+		        <link rel="stylesheet" href="{{ asset('css/adminka.css') }}">
+	        {% else %}
+		        <link rel="stylesheet" href="{{ asset('css/lib.min.css') }}">
+		        <link rel="stylesheet" href="{{ asset('css/adminka.min.css') }}">
+	        {% endif %}
         {% endblock %}
-
         {% block javascripts %}
-	        <script src="{{ asset('bundles/sonatacore/vendor/moment/locale/test.js') }}"></script>
+	        <script src="{{ asset('js/lib.min.js') }}"></script>
+	        {% if app.debug %}
+		        <script src="{{ asset('js/adminka.js') }}"></script>
+	        {% else %}
+		        <script src="{{ asset('js/adminka.min.js') }}"></script>
+	        {% endif %}
         {% endblock %}
-
-        <title>
-        {% block head_title %}
-	        titletitle
-        {% endblock %}
-        </title>
+	    {% spaceless %}
+		    <title>{% block head_title %} titletitle {% endblock %}</title>
+	    {% endspaceless %}
     </head>
-    <body class="sonata-bc skin-black fixed">
-	    <div class="wrapper">
+    <body class="sonata-bc skin-black fixed" ng-app="app" ng-controller="LayoutCtrl as layout">
+	    {% block header %}
+		     <header class="navbar navbar-default navbar-fixed-top navbar-inner">
+			     <div class="navbar-header">
+				     <a href="/adminka" role="button" class="navbar-brand">Admin Panel</a>
+			     </div>
+			     {% include 'AppBundle:Adminka:navbar.html.twig' %}
+		    </header>
+	    {% endblock header %}
+	    {% block wrapper %}
+		    <div class="wrapper sidebar-[[isHideSidebar ? 'hide' : 'show']]">
+			    {% block sidebar_left %}
+				    {% include 'AppBundle:Adminka:sidebar_left.html.twig' %}
+			    {% endblock sidebar_left %}
+			    <div class="content-wrapper">
+				    {% block content_header %}
+					    <section class="content-header">
+						    sonata_page_content_header
+					    </section>
+				    {% endblock content_header %}
 
-	        {% block header %}
-	            <header class="main-header">
-		            <nav class="navbar navbar-static-top" role="navigation">
-		            </nav>
-	            </header>
-	        {% endblock header %}
+				    <section class="content">
+					    {% block content %}
+						    пропоп
+					    {% endblock content %}
+					</section>
 
-	        {% block wrapper %}
-	            {% block left_side %}
-	                <aside class="main-sidebar">
-	                    <section class="sidebar">
-		                    sonata_sidebar_search
-	                    </section>
-	                </aside>
-	            {% endblock left_side %}
+			    </div>
+		    </div>
+	    {% endblock wrapper %}
 
-	            <div class="content-wrapper">
-		            <section class="content-header">
-			            sonata_page_content_header
-		            </section>
-
-		            <section class="content">
-
-		            </section>
-	            </div>
-	        {% endblock wrapper %}
-	    </div>
     </body>
 </html>
+
+{#<div ng-controller="MainCtrl">#}
+	{#<ul>#}
+		{#<li ng-repeat="item in items">#}
+			{#[[item.name]] [[item.id]]#}
+		{#</li>#}
+	{#</ul>#}
+{#</div>#}
+
+{#<div ng-controller="AppCtrl">#}
+	{#[[ someValue ]]#}
+{#</div>#}
