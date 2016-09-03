@@ -1,14 +1,14 @@
 <?php
 namespace AppBundle\Controller\Admin;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 
 /**
- * class: DefaultController
+ * class: DashboardAdmController
  * -----------------------------------------------------
  * Created by MihailShirnin on 31.08.2016.
  */
 
-class DefaultController extends Controller
+class DashboardAdmController extends ExtendsAdmController
 {
 
 	public function indexAction()
