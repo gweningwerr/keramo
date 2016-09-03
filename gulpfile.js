@@ -20,7 +20,7 @@ var buld = {
 	less: {
 		lib: [
 			'bower_components/bootstrap/less/bootstrap.less',
-			//'bower_components/angular-bootstrap/ui-bootstrap-csp.css',
+			'bower_components/bootstrap-table/dist/bootstrap-table.css',
 			'bower_components/font-awesome-less/css/font-awesome.css'
 		],
 		base: [
@@ -29,13 +29,9 @@ var buld = {
 	},
 	js: {
 		lib: [
-			//'bower_components/angular/angular.js',
 			'bower_components/jquery/dist/jquery.js',
-			//'bower_components/angular-animate/angular-animate.js',
-			//'bower_components/angular-sanitize/angular-sanitize.js',
-			//'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-			//'bower_components/angular-bootstrap/ui-bootstrap.js'
 			'bower_components/bootstrap/dist/js/bootstrap.js'
+			//'bower_components/bootstrap-table/dist/bootstrap-table.js'
 		],
 		base: [
 			'src/AppBundle/Resources/public/js/adminka.js',
@@ -161,6 +157,6 @@ gulp.task('default', ['clean'], function () {
 // gulp watch
 gulp.task('watch', function () {
     var less = gulp.watch('src/AppBundle/Resources/public/css/**/*.less', ['buld:less']),
-        js = gulp.watch(buld.js.base, ['buld:js']);
+        js = gulp.watch('src/AppBundle/Resources/public/js/**/*.js', ['buld:js']);
 });
   
