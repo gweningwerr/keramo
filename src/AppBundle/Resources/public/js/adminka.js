@@ -17,6 +17,13 @@ $(document).ready(function () {
 				this.chache.els.aSidebarShow = $('.sidebar-show');
 			}
 			return this.chache.els.aSidebarShow;
+		},
+		/** DOM элемент .bstable */
+		$bstable: function () {
+			if (!this.chache.els.bstable) {
+				this.chache.els.bstable = $('.bstable');
+			}
+			return this.chache.els.bstable;
 		}
 	};
 	
@@ -30,3 +37,6 @@ $(document).ready(function () {
 	
 	
 });
+
+
+
