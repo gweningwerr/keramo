@@ -27,7 +27,7 @@
 		    <title>{% block head_title %} titletitle {% endblock %}</title>
 	    {% endspaceless %}
     </head>
-    <body class="sonata-bc skin-black fixed" ng-app="app" ng-controller="LayoutCtrl as layout">
+    <body class="sonata-bc skin-black fixed" >
 	    {% block header %}
 		     <header class="navbar navbar-default navbar-fixed-top navbar-inner">
 			     <div class="navbar-header">
@@ -37,7 +37,7 @@
 		    </header>
 	    {% endblock header %}
 	    {% block wrapper %}
-		    <div class="wrapper sidebar-[[isHideSidebar ? 'hide' : 'show']]">
+		    <div class="wrapper">
 			    {% block sidebar_left %}
 				    {% include 'AppBundle:Adminka:sidebar_left.html.twig' %}
 			    {% endblock sidebar_left %}
