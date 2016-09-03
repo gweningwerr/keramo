@@ -152,10 +152,8 @@ class RequestHelper
 	 * @return Request
 	 */
 	public static function syRequest() {
-		if (!static::$syRequest instanceof Request) {
-			//static::$syRequest = Request::createFromGlobals();
-			//static::$syRequest = AppBundle::getContainer()->get('request');
-			static::$syRequest = new Request();
+		if (!static::$syRequest) {
+			static::$syRequest = App::getRequest();
 		}
 		return static::$syRequest;
 	}
