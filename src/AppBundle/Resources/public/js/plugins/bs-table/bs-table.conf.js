@@ -81,6 +81,36 @@ $(document).ready(function () {
 //	функции для bootstrapTable
 ///////////////////////////////////////////////////////////////////
 
+function formatterId(value, row, index) {
+	if (row.links && row.links.edit) {
+		value = '<a href="' + row.links.edit + '">' + value + '</a>';
+	}
+	return value;
+}
+/**
+ * формируем список операций
+ * @param value
+ * @param row
+ * @returns {*}
+ */
+function formatterActions(value, row) {
+	if (row.actions && row.links) {
+		value = '<div class="btn-group btn-group-xs">';
+		$.each(row.actions, function( name, link ) {
+			switch (name) {
+				case 'delete':
+					value += '<a href="' + link + '" title="' + name + '" class="btn btn-danger"><i class="fa fa-times"></i></a>';
+					break;
+				case 'edit':
+					value += '<a href="' + link + '" title="' + name + '" class="btn btn-default"><i class="fa fa-pencil"></i></a>';
+					break;
+			}
+		});
+		value += '</div>'
+	}
+	return value;
+}
+
 // function funcBSgetIdSelections() {
 // 	return $.map(adm.$bstable().bootstrapTable('getSelections'), function (row) {
 // 		return row.id

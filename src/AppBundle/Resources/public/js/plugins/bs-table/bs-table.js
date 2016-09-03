@@ -1097,10 +1097,9 @@
                 '<ul class="dropdown-menu" role="menu">');
 
             $.each(this.columns, function (i, column) {
-                if (column.radio || column.checkbox) {
+                if (column.radio || column.checkbox || column.title.length < 1) {
                     return;
                 }
-
                 if (that.options.cardView && !column.cardVisible) {
                     return;
                 }
