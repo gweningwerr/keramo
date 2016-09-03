@@ -14,8 +14,36 @@ login:
 login_check:
     path:   /login_check
 
-adminka:
+adminka.home:
     path: /adminka
-    defaults: { _controller: AppBundle:Admin/Default:index, _locale: '%locale%' }
+    defaults: { _controller: AppBundle:Admin/DashboardAdm:index, _locale: '%locale%' }
     requirements:
         _locale: '%available_langs%'
+
+# роуты по юзерам
+adminka.user.list:
+    path: /adminka/users
+    defaults: { _controller: AppBundle:Admin/UsersAdm:list, id: null, _locale: '%locale%' }
+    requirements:
+        _locale: '%available_langs%'
+
+adminka.user.update:
+    path: /adminka/user/{id}
+    defaults: { _controller: AppBundle:Admin/UsersAdm:update, _locale: '%locale%' }
+    requirements:
+        _locale: '%available_langs%'
+        id: \d+
+
+adminka.user.edit:
+    path: /adminka/user/{id}/edit
+    defaults: { _controller: AppBundle:Admin/UsersAdm:edit, _locale: '%locale%' }
+    requirements:
+        _locale: '%available_langs%'
+        id: \d+
+
+adminka.user.delete:
+    path: /adminka/user/{id}/del
+    defaults: { _controller: AppBundle:Admin/UsersAdm:delete, _locale: '%locale%' }
+    requirements:
+        _locale: '%available_langs%'
+        id: \d+
