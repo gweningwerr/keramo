@@ -16,12 +16,11 @@
 	        {% endif %}
         {% endblock %}
         {% block javascripts %}
-	        <script src="{{ asset('js/lib.min.js') }}"></script>
-	        {% if app.debug %}
-		        <script src="{{ asset('js/adminka.js') }}"></script>
-	        {% else %}
-		        <script src="{{ asset('js/adminka.min.js') }}"></script>
-	        {% endif %}
+	        <script src="{{ asset('js/lib.js') }}"></script>
+	        <script src="{{ asset('js/adminka.js') }}"></script>
+	        <script src="{{ asset('js/bs-table.js') }}"></script>
+
+
         {% endblock %}
 	    {% spaceless %}
 		    <title>{% block head_title %} titletitle {% endblock %}</title>
