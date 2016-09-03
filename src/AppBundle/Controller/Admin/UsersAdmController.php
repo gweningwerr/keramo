@@ -19,7 +19,7 @@ class UsersAdmController extends ExtendsAdmController
 	private $repoUser;
 
 
-	public function indexAction()
+	public function listAction()
 	{
 		if (RequestHelper::isAjax()) {
 			$users = $this->repoUser()->findAll();
@@ -33,6 +33,14 @@ class UsersAdmController extends ExtendsAdmController
 					'stargazers_count' => 20,
 					'forks_count' => 122,
 					'description' => 'description',
+					'links' => [
+						'edit' => $this->generateUrl('adminka.user.edit', ['id'=>$user->getId()]),
+						'delete' => $this->generateUrl('adminka.user.delete', ['id'=>$user->getId()]),
+					],
+					'actions' => [
+						'delete' => $this->generateUrl('adminka.user.delete', ['id'=>$user->getId()]),
+						'edit' => $this->generateUrl('adminka.user.edit', ['id'=>$user->getId()]),
+					],
 				];
 			}
 			$response = ['rows' => $rows, "total"=> count($rows),];
@@ -45,14 +53,19 @@ class UsersAdmController extends ExtendsAdmController
 		return $this->ok($response);
 	}
 
-	public function profileAction()
-	{
-		App::dumpExit('UsersAdmController:indexAction');
-	}
-
 	public function editAction()
 	{
-		App::dumpExit('UsersAdmController:indexAction');
+		App::dumpExit('UsersAdmController:editAction');
+	}
+
+	public function deleteAction()
+	{
+		App::dumpExit('UsersAdmController:deleteAction');
+	}
+
+	public function updateAction()
+	{
+		App::dumpExit('UsersAdmController:updateAction');
 	}
 
 	/**
