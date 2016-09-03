@@ -90,6 +90,42 @@ h6,
 .breadcrumb > .active {
   color: #93a8a8;
 }
+.fixed-table-toolbar .columns {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.fixed-table-toolbar .search {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.bstable {
+  font-size: 12px;
+}
+.bstable tr > th {
+  background-color: #E6EAED;
+}
+.bstable tr:hover > td {
+  background-color: #e2e9ed;
+}
+.bstable tr:nth-child(2n) > td {
+  background-color: #F2F5F7;
+}
+.bstable tr:nth-child(2n):hover > td {
+  background-color: #d2dde4;
+}
+.bstable tr > td {
+  background-color: #fff;
+  padding: 3px 0 3px 8px !important;
+}
+.bstable tr > td:first-child {
+  padding: 3px 0 3px 0 !important;
+}
+.bstable tr > td.id {
+  width: 80px;
+}
+.bstable tr > td.actions {
+  width: 120px;
+}
 .nav,
 .pagination,
 .carousel,
