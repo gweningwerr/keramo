@@ -25,7 +25,6 @@ class App {
 	private static $aLocalesCode = [];
 	private static $aLocalesCodeFull = [];
 	private static $aLocales = [];
-	private static $aLocalesFull = [];
 	private static $oContainer;
 	private static $oDoctrine;
 	private static $oEntityManager;
@@ -35,7 +34,6 @@ class App {
 	private static $sCurLocale;
 	private static $oLogger;
 	private static $oRouter;
-	private static $oPortal;
 	private static $oMemcache;
 	private static $aMemcacheDump = [];
 	private static $aListRoles = [];
@@ -275,17 +273,6 @@ class App {
 			static::$oRouter = static::getContainer()->get('router');
 		}
 		return static::$oRouter;
-	}
-
-	/**
-	 * @return PortalHelper
-	 */
-	public static function getPortal()
-	{
-		if (!static::$oPortal) {
-			static::$oPortal = static::getContainer()->get('portal');
-		}
-		return static::$oPortal;
 	}
 
 	/**
