@@ -36,6 +36,50 @@ $(document).ready(function () {
 	});
 	
 	
+	$('a.save-form').on('click', function (e) {
+		e.preventDefault();
+		var $form = $('form');
+		var data = $form.serialize();
+		sendAjax({
+			url: $form.attr('action'),
+			type: 'POST',
+			data: data
+		}, function (json) {
+			if ( isOK(json) ) {
+				console.log ('json.content', json.content);
+				BsDialog.show({
+					//title: 'Изменение пароля',
+					size: BsDialog.SIZE_NORMAL,
+					message: function() {
+						return json.content.msg;
+					},
+					buttons: [ {
+						label: 'Вернуться к списку',
+						cssClass: 'btn-primary',
+						action: function(dialog){
+							window.location.href = json.content.link.list;
+							dialog.close();
+						}
+					},{
+						label: 'Продолжить редактирование',
+						action: function(dialog){
+							if (!isUrl( json.content.link.edit)){
+								window.location.href = json.content.link.list;
+							}
+							dialog.close();
+						}
+					}]
+				});
+				
+			} else {
+				BsDialog.alert(json.content);
+			}
+		});
+		
+		
+		
+	});
+	
 });
 
 
