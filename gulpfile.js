@@ -21,7 +21,9 @@ var buld = {
 		lib: [
 			'bower_components/bootstrap/less/bootstrap.less',
 			'bower_components/bootstrap-table/dist/bootstrap-table.css',
-			'bower_components/font-awesome-less/css/font-awesome.css'
+			'bower_components/font-awesome-less/css/font-awesome.css',
+			'bower_components/select2/dist/css/select2.css',
+			'bower_components/select2-bootstrap-theme/dist/select2-bootstrap.css'
 		],
 		base: [
 			'src/AppBundle/Resources/public/css/*.less'
@@ -32,6 +34,7 @@ var buld = {
 			'bower_components/jquery/dist/jquery.js',
 			'bower_components/bootstrap/dist/js/bootstrap.js',
 			'src/AppBundle/Resources/public/js/plugins/bs-dialog.js',
+			'bower_components/select2/dist/js/select2.full.js'
 		],
 		base: [
 			'src/AppBundle/Resources/public/js/adminka.js',
