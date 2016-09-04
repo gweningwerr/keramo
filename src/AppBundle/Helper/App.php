@@ -38,6 +38,7 @@ class App {
 	private static $oPortal;
 	private static $oMemcache;
 	private static $aMemcacheDump = [];
+	private static $aListRoles = [];
 
 	/**
 	 * Хелпер Дамепра от Symfony, передавать можно любое количество парметров
@@ -149,6 +150,19 @@ class App {
 		}
 
 		return static::$oContainer;
+	}
+
+	/**
+	 * Получение списка ролей
+	 * @return array
+	 */
+	public static function getListRoles()
+	{
+		if (!static::$aListRoles) {
+			static::$aListRoles = static::getContainer()->getParameter('security.role_hierarchy.roles');
+		}
+
+		return static::$aListRoles;
 	}
 
 	/**
