@@ -30,8 +30,8 @@ var buld = {
 	js: {
 		lib: [
 			'bower_components/jquery/dist/jquery.js',
-			'bower_components/bootstrap/dist/js/bootstrap.js'
-			//'bower_components/bootstrap-table/dist/bootstrap-table.js'
+			'bower_components/bootstrap/dist/js/bootstrap.js',
+			'src/AppBundle/Resources/public/js/plugins/bs-dialog.js',
 		],
 		base: [
 			'src/AppBundle/Resources/public/js/adminka.js',
