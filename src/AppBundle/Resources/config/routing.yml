@@ -28,7 +28,7 @@ adminka.user.list:
         _locale: '%available_langs%'
 
 adminka.user.update:
-    path: /adminka/user/{id}
+    path: /adminka/user/{id}/update
     defaults: { _controller: AppBundle:Admin/UsersAdm:update, _locale: '%locale%' }
     requirements:
         _locale: '%available_langs%'
