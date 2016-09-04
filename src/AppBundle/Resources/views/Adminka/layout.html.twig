@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.get('_locale') }}">
     <head>
+
         {% block meta_tags %}
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta charset="UTF-8">
             <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+	        {% set csrfToken = csrf_token(app.request.session.getId()) %}
+	        {# CSFR токен для проверки AJAX запросов #}
+	        <meta content="authenticity_token" name="csrf-param" />
+	        <meta content="{{ csrfToken }}" name="csrf-token" />
         {% endblock %}
         {% block stylesheets %}
 	        {% if app.debug %}
@@ -17,6 +22,7 @@
         {% endblock %}
         {% block javascripts %}
 	        <script src="{{ asset('js/lib.js') }}"></script>
+	        <script src="{{ asset('js/app.js') }}"></script>
 	        <script src="{{ asset('js/adminka.js') }}"></script>
 	        <script src="{{ asset('js/bs-table.js') }}"></script>
 
@@ -27,6 +33,7 @@
 	    {% endspaceless %}
     </head>
     <body class="sonata-bc skin-black fixed" >
+
 	    {% block header %}
 		     <header class="navbar navbar-default navbar-fixed-top navbar-inner">
 			     <div class="navbar-header">
@@ -37,6 +44,7 @@
 	    {% endblock header %}
 	    {% block wrapper %}
 		    <div class="wrapper">
+
 			    {% block sidebar_left %}
 				    {% include 'AppBundle:Adminka:sidebar_left.html.twig' %}
 			    {% endblock sidebar_left %}
