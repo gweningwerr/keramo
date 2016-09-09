@@ -55,7 +55,7 @@ $(document).ready(function () {
 				$bst.bootstrapTable({
 					sidePagination: 'server',
 					sortName: 'id',
-					sortOrder: 'desc',
+					sortOrder: 'ASC',
 					showDell: true,
 					//url: url
 				});

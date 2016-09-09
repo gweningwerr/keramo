@@ -2,13 +2,13 @@
 namespace AppBundle\Helper;
 
 /*
- * class: ArrHelper
+ * class: ArrCm
  * -----------------------------------------------------
  * Лезпер по работе с пассивами
  * @package AppBundle\Helper
  */
 
-class ArrHelper
+class ArrCm
 {
 
 

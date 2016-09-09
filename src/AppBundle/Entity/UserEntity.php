@@ -1,5 +1,7 @@
 <?php
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use FOS\UserBundle\Model\Group;
@@ -23,9 +25,11 @@ class UserEntity extends BaseUser
 	 */
 	protected $id;
 
+
 	public function __construct()
 	{
 		parent::__construct();
 	}
-}
 
+
+}

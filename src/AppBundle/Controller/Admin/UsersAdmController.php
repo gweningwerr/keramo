@@ -2,10 +2,11 @@
 namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\UserEntity;
 use AppBundle\Helper\App;
-use AppBundle\Helper\RequestHelper;
+use AppBundle\Helper\RequestCm;
 use AppBundle\Repository\UserRepository;
 use DateTime;
 use Doctrine\Common\Persistence\ObjectRepository;
+use FOS\UserBundle\Model\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
@@ -27,7 +28,7 @@ class UsersAdmController extends ExtendsAdmController
 	 */
 	public function listAction()
 	{
-		if (RequestHelper::isAjax()) {
+		if (RequestCm::isAjax()) {
 			$response = $this->getListUsersBySorted();
 		} else {
 			$response = $this->render('AppBundle:Adminka:user_list.html.twig', [
@@ -40,7 +41,7 @@ class UsersAdmController extends ExtendsAdmController
 
 	private function getListUsersBySorted()
 	{
-		$bsTable = RequestHelper::getVar('bstable', []);
+		$bsTable = RequestCm::getVar('bstable', []);
 		$users = $this->repoUser()->getByBsTable($bsTable);
 
 
@@ -69,23 +70,15 @@ class UsersAdmController extends ExtendsAdmController
 
 	public function editAction($id)
 	{
-		/** @var UserEntity $user  */
-		$user = $this->repoUser()->find($id);
-
-//		$securityContext = App::getContainer()->get('security.authorization_checker');
-//		$res = $securityContext->isGranted('ROLE_SUPER_ADMIN', $user);
-//
-//		App::dump($res, App::getContainer()->getParameter('security.role_hierarchy.roles') );
-//
-//
-//		App::dump($user->getGroups());
-//		App::dumpExit();
+        /** @var UserEntity $user  */
+        $user = $this->repoUser()->find($id);
 		if (!$user) {
 			throw new NotFoundHttpException('Такого пользователя нет');
 		}
+		$roles = App::getListRoles();
 		$response = $this->render('AppBundle:Adminka:user_edit.html.twig', [
 			'user' => $user,
-			'roles' => App::getListRoles(),
+			'roles' => $roles,
 			'formAction' => $this->generateUrl('adminka.user.update', ['id'=>$user->getId()]),
 			'linkList' => $this->generateUrl('adminka.user.list'),
 		]);
@@ -106,7 +99,7 @@ class UsersAdmController extends ExtendsAdmController
 			return $this->error('Такого пользователя нет');
 		}
 
-		$newPwd = RequestHelper::getString('new_password');
+		$newPwd = RequestCm::getString('new_password');
 		if ($newPwd) {
 			$encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
 			if (!$encoder) {
@@ -117,13 +110,13 @@ class UsersAdmController extends ExtendsAdmController
 			$user->setPassword($newPwdEncoded);
 		}
 
-		$email = RequestHelper::getEmail('email');
+		$email = RequestCm::getEmail('email');
 		if ($email) {
 			$user->setEmail($email);
 			$user->setEmailCanonical($email);
 		}
 
-		$roles = RequestHelper::getVar('roles');
+		$roles = RequestCm::getVar('roles');
 		if ($roles && is_array($roles)) {
 			$user->setRoles($roles);
 		}
@@ -132,7 +125,7 @@ class UsersAdmController extends ExtendsAdmController
 		App::em()->flush();
 
 		$response = [
-			'Request' => RequestHelper::getAll(),
+			'Request' => RequestCm::getAll(),
 			'msg' => 'Данные были успешно обновлены. Выберете дальнейшее действие.',
 			'$roles' => $roles,
 			'link' => [

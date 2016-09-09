@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Testing;
 use AppBundle\Helper\App;
-use AppBundle\Helper\RequestHelper;
+use AppBundle\Helper\RequestCm;
 use AppBundle\Repository\BannerRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;

@@ -8,6 +8,7 @@ namespace AppBundle\Helper;
  * @package AppBundle\Helper
  */
 use AppBundle\AppBundle;
+use AppBundle\Entity\UserEntity;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManager;
@@ -37,6 +38,7 @@ class App {
 	private static $oMemcache;
 	private static $aMemcacheDump = [];
 	private static $aListRoles = [];
+    private static $oCurUser;
 
 	/**
 	 * Хелпер Дамепра от Symfony, передавать можно любое количество парметров
@@ -45,7 +47,7 @@ class App {
 	public static function dump(...$params)
 	{
 		$params = (count($params) <= 1) ? $params[0] : $params;
-		if (!RequestHelper::isAjax()) {
+		if (!RequestCm::isAjax()) {
 			VarDumper::dump($params);
 		}
 
@@ -65,7 +67,7 @@ class App {
 	public static function dumpExit(...$params)
 	{
 		$params = (count($params) == 1) ? $params[0] : $params;
-		if (!RequestHelper::isAjax()) {
+		if (!RequestCm::isAjax()) {
 			VarDumper::dump($params);
 			exit();
 		}
@@ -398,5 +400,17 @@ class App {
 		$pos = strripos($str, $search);
 		return $pos !== false;
 	}
+
+    /**
+     * @return mixed|UserEntity
+     */
+    public static function getCurUser()
+    {
+        if (!static::$oCurUser) {
+            static::$oCurUser = static::getContainer()->get('security.token_storage')->getToken()->getUser();
+        }
+        return static::$oCurUser;
+    }
+
 }
 

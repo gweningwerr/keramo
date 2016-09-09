@@ -6,7 +6,7 @@ namespace AppBundle\Controller;
  * Created by MihailShirnin on 31.08.2016.
  * @package AppBundle\ExtendedController
  */
-use AppBundle\Helper\RequestHelper;
+use AppBundle\Helper\RequestCm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -20,7 +20,7 @@ class ExtendedController extends Controller
 	 */
 	protected function ok($val = null)
 	{
-		if (RequestHelper::isAjax()) {
+		if (RequestCm::isAjax()) {
 			$res['content'] = $val;
 			$res['status'] = 'success';
 			$res =  new JsonResponse($res);
@@ -38,7 +38,7 @@ class ExtendedController extends Controller
 	 */
 	protected function error($val=null)
 	{
-		if (RequestHelper::isAjax()) {
+		if (RequestCm::isAjax()) {
 			$res['content'] = $val;
 			$res['status'] = 'error';
 			$res =  new JsonResponse($res);

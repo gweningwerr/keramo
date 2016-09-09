@@ -9,7 +9,7 @@ defined('FILTER_FLAG_NO_ENCODE') or define ('FILTER_FLAG_NO_ENCODE',!FILTER_FLAG
  */
 use Symfony\Component\HttpFoundation\Request;
 
-class RequestHelper
+class RequestCm
 {
 
 	/** @var Request */
@@ -176,7 +176,7 @@ class RequestHelper
 			}
 		}
 		if ($name) {
-			$result = ArrHelper::get(static::$aVars, $name);
+			$result = ArrCm::get(static::$aVars, $name);
 		} else {
 			$result = static::$aVars;
 		}
